@@ -1,0 +1,55 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://geekbrains.com/book/store/entities"
+           targetNamespace="http://geekbrains.com/book/store/entities"
+           elementFormDefault="qualified">
+
+  <xs:element name="getBookRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="id" type="xs:long"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="getBookResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="book" type="tns:book"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="getAllBooksRequest">
+    <xs:complexType>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="getAllBooksResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="book" type="tns:book" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:complexType name="book">
+    <xs:sequence>
+      <xs:element name="description" type="xs:string" minOccurs="0"/>
+      <xs:element name="genre" type="tns:genre" minOccurs="0"/>
+      <xs:element name="genreValue" type="xs:string" minOccurs="0"/>
+      <xs:element name="id" type="xs:long" minOccurs="0"/>
+      <xs:element name="price" type="xs:decimal" minOccurs="0"/>
+      <xs:element name="publishYear" type="xs:int"/>
+      <xs:element name="title" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="genre">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="FANTASY"/>
+      <xs:enumeration value="FANTASTIC"/>
+      <xs:enumeration value="DETECTIVE"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>
+
